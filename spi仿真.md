@@ -1,28 +1,28 @@
 ###  spi_xil_bram_out
 
-![1544860257472](F:\SPI\SPI1\spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544860257472.png)
+![1544860257472](spi仿真/%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544860257472.png)
 
 仿真出来得功能符合预期想要实现的
 
 ###### 1.传输停止后，突然wen有一个时钟跳变的仿真
 
-![1547111135362](F:\SPI\SPI1\spi仿真\5C1547111135362.png)
+![1547111135362](spi仿真/5C1547111135362.png)
 
 这里第四行为wen的信号
 
-![1547111396034](F:\SPI\SPI1\spi仿真\5C1547111396034.png)
+![1547111396034](spi仿真/5C1547111396034.png)
 
 可以观察到那个突然的信号并没有让数据输入进来
 
 ###### 2.一个循环过来传输数据
 
-![1547125384856](F:\SPI\SPI1\spi仿真\1547125384856.png)
+![1547125384856](spi仿真/1547125384856.png)
 
 可以看到，再最后一行信号的7和8的链接处，没有出现问题
 
 # 修改一下程序
 
-![1547125829000](F:\SPI\SPI1\spi仿真\1547125829000.png)
+![1547125829000](spi仿真/1547125829000.png)
 
 使得一次wen的写入，就算改变地址，也不会写入数据
 
@@ -121,9 +121,9 @@ endmodule
 
 ### spi_xil_bram_in
 
-![](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544959716770.png)
+![](spi仿真/%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544959716770.png)
 
-![](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544959766887.png)
+![](spi仿真/%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544959766887.png)
 
 功能没什么问题
 
@@ -131,7 +131,7 @@ endmodule
 
 ### spi_counter_tb
 
-![1545031289285](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1545031289285.png)
+![1545031289285](spi仿真/%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1545031289285.png)
 
 从仿真结果来看呢，信号除了posedge clk之外，都是其他都是延迟一个时钟才输出的
 
@@ -141,13 +141,13 @@ endmodule
 
 ### spi_fsm_tb
 
-![1545034605509](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1545034605509.png)
+![1545034605509](spi仿真/%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1545034605509.png)
 
 
 
 ### spi_top_tb
 
-![1545142410238](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1545142410238.png)
+![1545142410238](spi仿真/%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1545142410238.png)
 
 从图片可以看出功能是实现了
 
