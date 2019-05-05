@@ -1,6 +1,6 @@
 ###  spi_xil_bram_out
 
-![1544860257472](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544860257472.png)
+![1544860257472](spi仿真/01.png)
 
 仿真出来得功能符合预期想要实现的
 
@@ -10,9 +10,9 @@
 
 ### spi_xil_bram_in
 
-![](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544959716770.png)
+![](spi仿真/02.png)
 
-![](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1544959766887.png)
+![](spi仿真/03.png)
 
 功能没什么问题
 
@@ -20,7 +20,7 @@
 
 ### spi_counter_tb
 
-![1545031289285](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1545031289285.png)
+![1545031289285](spi仿真/04.png)
 
 从仿真结果来看呢，信号除了posedge clk之外，都是其他都是延迟一个时钟才输出的
 
@@ -30,13 +30,13 @@
 
 ### spi_fsm_tb
 
-![1545034605509](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1545034605509.png)
+![1545034605509](spi仿真/05.png)
 
 
 
 ### spi_top_tb
 
-![1545142410238](spi仿真\%5CUsers%5CHP%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1545142410238.png)
+![1545142410238](spi仿真/06.png)
 
 从图片可以看出功能是实现了
 
