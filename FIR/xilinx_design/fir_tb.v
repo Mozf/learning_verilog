@@ -2,7 +2,7 @@
 // Module name: fir_tb
 // Author     : momo
 // E-mail     : 1345238761@qq.com
-// Create date: 2019.5.3
+// Create date: 2019.5.5
 // Description: read mem.txt and run the fir
 // -------------------------------------------------
 // Modification log here:
@@ -20,7 +20,7 @@ module fir_tb;
   reg   [7:0]   data_mem  [4095:0];
   reg   [11:0]  addr;
   wire  [7:0]   data;
-  wire  [16:0]  dout;
+  wire  [17:0]  dout;
 
   initial begin
     clk   = 1'b0;
@@ -44,7 +44,7 @@ module fir_tb;
 
   assign data = data_mem[addr];
 
-  fir8 fir_1
+  fir_sim fir_sim
   (
     .clk  ( clk   ),
     .rstn ( rstn  ),

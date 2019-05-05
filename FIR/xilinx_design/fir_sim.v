@@ -1,8 +1,8 @@
 //==============================================================================
-// Module name: fir
+// Module name: fir_sim
 // Author     : momo
 // E-mail     : 1345238761@qq.com
-// Create date: 2019.5.3
+// Create date: 2019.5.5
 // Description: fir design
 // -------------------------------------------------
 // Modification log here:
@@ -10,7 +10,7 @@
 // Date       : 
 // Message    :
 //==============================================================================
-module fir 
+module fir_sim
 #(
   localparam IWIDTH   = 8,
   localparam OWIDTH   = 16  
@@ -20,7 +20,7 @@ module fir
   input                       rstn,
   input       [IWIDTH - 1:0]  din,
   
-  output reg  [OWIDTH:0]      dout
+  output reg  [OWIDTH + 1:0]  dout
 );
 
   reg [IWIDTH - 1:0]  delay1;
@@ -31,23 +31,15 @@ module fir
   reg [IWIDTH - 1:0]  delay6;
   reg [IWIDTH - 1:0]  delay7;
   reg [IWIDTH - 1:0]  delay8;
-  reg [IWIDTH - 1:0]  delay9;
-  reg [IWIDTH - 1:0]  delay10;
-  reg [IWIDTH - 1:0]  delay11;
-  reg [IWIDTH - 1:0]  delay12;
 
-  reg [IWIDTH - 1:0]  coeff1  = 8'd9;
-  reg [IWIDTH - 1:0]  coeff2  = 8'd7;
-  reg [IWIDTH - 1:0]  coeff3  = 8'd12;
-  reg [IWIDTH - 1:0]  coeff4  = 8'd34;
-  reg [IWIDTH - 1:0]  coeff5  = 8'd71;
-  reg [IWIDTH - 1:0]  coeff6  = 8'd101;
-  reg [IWIDTH - 1:0]  coeff7  = 8'd101;
-  reg [IWIDTH - 1:0]  coeff8  = 8'd71;
-  reg [IWIDTH - 1:0]  coeff9  = 8'd34;
-  reg [IWIDTH - 1:0]  coeff10 = 8'd12;
-  reg [IWIDTH - 1:0]  coeff11 = 8'd7;
-  reg [IWIDTH - 1:0]  coeff12 = 8'd9;
+  reg [IWIDTH - 1:0]  coeff1  = 8'd4;
+  reg [IWIDTH - 1:0]  coeff2  = 8'd27;
+  reg [IWIDTH - 1:0]  coeff3  = 8'd135;
+  reg [IWIDTH - 1:0]  coeff4  = 8'd254;
+  reg [IWIDTH - 1:0]  coeff5  = 8'd254;
+  reg [IWIDTH - 1:0]  coeff6  = 8'd135;
+  reg [IWIDTH - 1:0]  coeff7  = 8'd27;
+  reg [IWIDTH - 1:0]  coeff8  = 8'd4;
 
   reg [OWIDTH - 1:0]  dmul1;
   reg [OWIDTH - 1:0]  dmul2;
@@ -57,10 +49,6 @@ module fir
   reg [OWIDTH - 1:0]  dmul6;
   reg [OWIDTH - 1:0]  dmul7;
   reg [OWIDTH - 1:0]  dmul8;
-  reg [OWIDTH - 1:0]  dmul9;
-  reg [OWIDTH - 1:0]  dmul10;
-  reg [OWIDTH - 1:0]  dmul11;
-  reg [OWIDTH - 1:0]  dmul12;
 
   //y(n) = h(n)*x(n)
   //输入信号延迟
@@ -74,10 +62,6 @@ module fir
       delay6  <= 8'd0;
       delay7  <= 8'd0;
       delay8  <= 8'd0;
-      delay9  <= 8'd0;
-      delay10 <= 8'd0;
-      delay11 <= 8'd0;
-      delay12 <= 8'd0;
     end
     else begin
       delay1  <=  din;
@@ -88,10 +72,6 @@ module fir
       delay6  <=  delay5;
       delay7  <=  delay6;
       delay8  <=  delay7;
-      delay9  <=  delay8;
-      delay10 <=  delay9;
-      delay11 <=  delay10;
-      delay12 <=  delay11;
     end
   end
 
@@ -135,85 +115,47 @@ module fir
     else      dmul8 <= delay8 * coeff8;
   end
 
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dmul9 <= 16'd0;
-    else      dmul9 <= delay9 * coeff9;
-  end
+  reg [OWIDTH:0] dadd1_1;
+  reg [OWIDTH:0] dadd1_2;
+  reg [OWIDTH:0] dadd1_3;
+  reg [OWIDTH:0] dadd1_4;
 
   always@(posedge clk or negedge rstn) begin
-    if(!rstn) dmul10 <= 16'd0;
-    else      dmul10 <= delay10 * coeff10;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dmul11 <= 16'd0;
-    else      dmul11 <= delay11 * coeff11;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dmul12 <= 16'd0;
-    else      dmul12 <= delay12 * coeff12;
-  end
-
-  reg [OWIDTH - 1:0] dadd1_1;
-  reg [OWIDTH - 1:0] dadd1_2;
-  reg [OWIDTH - 1:0] dadd1_3;
-  reg [OWIDTH - 1:0] dadd1_4;
-  reg [OWIDTH - 1:0] dadd1_5;
-  reg [OWIDTH - 1:0] dadd1_6;
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_1  <= 16'd0;
+    if(!rstn) dadd1_1  <= 17'd0;
     else      dadd1_1  <= dmul1 + dmul2;
   end
 
   always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_2  <= 16'd0;
+    if(!rstn) dadd1_2  <= 17'd0;
     else      dadd1_2  <= dmul3 + dmul4;
   end
 
   always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_3  <= 16'd0;
+    if(!rstn) dadd1_3  <= 17'd0;
     else      dadd1_3  <= dmul5 + dmul6;
   end
 
   always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_4  <= 16'd0;
+    if(!rstn) dadd1_4  <= 17'd0;
     else      dadd1_4  <= dmul7 + dmul8;
   end
 
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_5  <= 16'd0;
-    else      dadd1_5  <= dmul9 + dmul10;
-  end
+  reg [OWIDTH + 1:0] dadd2_1;
+  reg [OWIDTH + 1:0] dadd2_2;
 
   always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_6  <= 16'd0;
-    else      dadd1_6  <= dmul11 + dmul12;
-  end
-
-  reg [OWIDTH:0] dadd2_1;
-  reg [OWIDTH:0] dadd2_2;
-  reg [OWIDTH:0] dadd2_3;
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd2_1  <= 17'd0;
+    if(!rstn) dadd2_1  <= 18'd0;
     else      dadd2_1  <= dadd1_1 + dadd1_2;
   end
 
   always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd2_2  <= 17'd0;
+    if(!rstn) dadd2_2  <= 18'd0;
     else      dadd2_2  <= dadd1_3 + dadd1_4;
   end
 
   always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd2_3  <= 17'd0;
-    else      dadd2_3  <= dadd1_5 + dadd1_6;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dout  <= 17'd0;
-    else      dout  <= dadd2_1 + dadd2_2 + dadd2_3;
+    if(!rstn) dout  <= 18'd0;
+    else      dout  <= dadd2_1 + dadd2_2;
   end
 
 endmodule
