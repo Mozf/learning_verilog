@@ -49,18 +49,18 @@ module fir
   reg [IWIDTH - 1:0]  coeff11 = 8'd7;
   reg [IWIDTH - 1:0]  coeff12 = 8'd9;
 
-  reg  [OWIDTH - 1:0]  dmul1;
-  reg  [OWIDTH - 1:0]  dmul2;
-  reg  [OWIDTH - 1:0]  dmul3;
-  reg  [OWIDTH - 1:0]  dmul4;
-  reg  [OWIDTH - 1:0]  dmul5;
-  reg  [OWIDTH - 1:0]  dmul6;
-  reg  [OWIDTH - 1:0]  dmul7;
-  reg  [OWIDTH - 1:0]  dmul8;
-  reg  [OWIDTH - 1:0]  dmul9;
-  reg  [OWIDTH - 1:0]  dmul10;
-  reg  [OWIDTH - 1:0]  dmul11;
-  reg  [OWIDTH - 1:0]  dmul12;
+  reg [OWIDTH - 1:0]  dmul1;
+  reg [OWIDTH - 1:0]  dmul2;
+  reg [OWIDTH - 1:0]  dmul3;
+  reg [OWIDTH - 1:0]  dmul4;
+  reg [OWIDTH - 1:0]  dmul5;
+  reg [OWIDTH - 1:0]  dmul6;
+  reg [OWIDTH - 1:0]  dmul7;
+  reg [OWIDTH - 1:0]  dmul8;
+  reg [OWIDTH - 1:0]  dmul9;
+  reg [OWIDTH - 1:0]  dmul10;
+  reg [OWIDTH - 1:0]  dmul11;
+  reg [OWIDTH - 1:0]  dmul12;
 
   //y(n) = h(n)*x(n)
   //输入信号延迟
