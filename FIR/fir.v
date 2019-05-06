@@ -155,65 +155,9 @@ module fir
     else      dmul12 <= delay12 * coeff12;
   end
 
-  reg [OWIDTH - 1:0] dadd1_1;
-  reg [OWIDTH - 1:0] dadd1_2;
-  reg [OWIDTH - 1:0] dadd1_3;
-  reg [OWIDTH - 1:0] dadd1_4;
-  reg [OWIDTH - 1:0] dadd1_5;
-  reg [OWIDTH - 1:0] dadd1_6;
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_1  <= 16'd0;
-    else      dadd1_1  <= dmul1 + dmul2;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_2  <= 16'd0;
-    else      dadd1_2  <= dmul3 + dmul4;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_3  <= 16'd0;
-    else      dadd1_3  <= dmul5 + dmul6;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_4  <= 16'd0;
-    else      dadd1_4  <= dmul7 + dmul8;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_5  <= 16'd0;
-    else      dadd1_5  <= dmul9 + dmul10;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd1_6  <= 16'd0;
-    else      dadd1_6  <= dmul11 + dmul12;
-  end
-
-  reg [OWIDTH:0] dadd2_1;
-  reg [OWIDTH:0] dadd2_2;
-  reg [OWIDTH:0] dadd2_3;
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd2_1  <= 17'd0;
-    else      dadd2_1  <= dadd1_1 + dadd1_2;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd2_2  <= 17'd0;
-    else      dadd2_2  <= dadd1_3 + dadd1_4;
-  end
-
-  always@(posedge clk or negedge rstn) begin
-    if(!rstn) dadd2_3  <= 17'd0;
-    else      dadd2_3  <= dadd1_5 + dadd1_6;
-  end
-
   always@(posedge clk or negedge rstn) begin
     if(!rstn) dout  <= 17'd0;
-    else      dout  <= dadd2_1 + dadd2_2 + dadd2_3;
+    else      dout  <= dmul1 + dmul2 + dmul3 + dmul4 + dmul5 + dmul6 + dmul7 + dmul8 + dmul9 + dmul10 + dmul11 + dmul12;
   end
 
 endmodule
