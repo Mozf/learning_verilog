@@ -27,7 +27,7 @@ module fir_tb;
     rstn  = 1'b0;
 
     #20 rstn = 1'b1;
-    //文件地址按需求更改
+    //文件地址按需求更�?
     $readmemh("F:/gitworkspace/verilog/FIR/mem.txt",data_mem);
   end
 
@@ -44,7 +44,7 @@ module fir_tb;
 
   assign data = data_mem[addr];
 
-  fir8 fir_1
+  fir fir_1
   (
     .clk  ( clk   ),
     .rstn ( rstn  ),
