@@ -1,5 +1,5 @@
 //==============================================================================
-// Module name: opelv
+// Module name: opendoor
 // Author     : momo
 // E-mail     : 1345238761@qq.com
 // Create date: 2019.7.9
@@ -11,32 +11,32 @@
 // Date       : 
 // Message    :
 //==============================================================================
-module opelv
+module opendoor
 #(
   parameter  STATE = 4
 )
 (
-  input clk,
-  input rstn,
+  input                 clk,
+  input                 rstn,
 
-  input open,
+  input                 open,
 
-  input   [STATE:0] out_state;
+  input       [STATE:0] out_state;
 
-  output  reg LED5_R，
+  output  reg           LED5_R，
 
-  output  reg close,
+  output  reg           close,
 
   //外呼灯
-  output reg  LED0,
-  output reg  LED1,
-  output reg  LED2,
-  output reg  LED3,
+  output  reg           LED0,
+  output  reg           LED1,
+  output  reg           LED2,
+  output  reg           LED3,
   
   //内呼灯
-  output reg  LED6,
-  output reg  LED7,
-  output reg  LED8
+  output  reg           LED6,
+  output  reg           LED7,
+  output  reg           LED8
 );
 
   reg  [6:0]  cnt100;

@@ -33,9 +33,17 @@ module fsm
   input                 rstn,
 
   //位置接收信号
-  input                 red1,
-  input                 red2,
-  input                 red3,
+  input                 red1_reg,
+  input                 red2_reg,
+  input                 red3_reg,
+
+  input                 red1_up,
+  input                 red2_up,
+  input                 red3_up,
+
+  input                 red1_down,
+  input                 red2_down,
+  input                 red3_down,
 
   output reg            down,
   output reg            up,
@@ -69,12 +77,23 @@ module fsm
   reg  [STATE:0] current_state;
   reg  [STATE:0] next_state;
 
+  always@(posedge clk or negedge rstn) begin 
+    if(!rstn) begin
+      out_state <= 4'd0;
+    end
+    else if(current_state != out_state) begin
+      out_state <= current_state;
+    end
+    else begin
+      out_state <= out_state;
+    end
+  end
+
   always @(posedge clk or negedge rstn) begin
     if(!rstn) 
       current_state <= SIDLE;
     else  begin
       current_state <= next_state;
-      out_state     <= current_state;
     end
   end
 
