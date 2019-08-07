@@ -132,57 +132,57 @@ module ledcontrol
   end
 
   always@(posedge clk or negedge rstn) begin 
-    if(!rstn)  LED6_reg <= 1'b0;
+    if(!rstn)  LED6_reg <= 1'b1;
     else       LED6_reg <= LED6_in;
   end
 
   always@(posedge clk or negedge rstn) begin 
     if(!rstn) begin
-      LED6 <= 1'b0;
-    end
-    else if(BTN6) begin
       LED6 <= 1'b1;
     end
-    else if(LED6_reg == 1'b0 && LED6_in == 1'b1) begin
+    else if(BTN4) begin
       LED6 <= 1'b0;
+    end
+    else if(LED6_reg == 1'b1 && LED6_in == 1'b0) begin
+      LED6 <= 1'b1;
     end
     else 
       LED6 <= LED6;
   end
 
   always@(posedge clk or negedge rstn) begin 
-    if(!rstn)  LED7_reg <= 1'b0;
+    if(!rstn)  LED7_reg <= 1'b1;
     else       LED7_reg <= LED7_in;
   end
 
   always@(posedge clk or negedge rstn) begin 
     if(!rstn) begin
-      LED7 <= 1'b0;
-    end
-    else if(BTN7) begin
       LED7 <= 1'b1;
     end
-    else if(LED7_reg == 1'b0 && LED7_in == 1'b1) begin
+    else if(BTN5) begin
       LED7 <= 1'b0;
+    end
+    else if(LED7_reg == 1'b1 && LED7_in == 1'b0) begin
+      LED7 <= 1'b1;
     end
     else 
       LED7 <= LED7;
   end
 
   always@(posedge clk or negedge rstn) begin 
-    if(!rstn)  LED8_reg <= 1'b0;
+    if(!rstn)  LED8_reg <= 1'b1;
     else       LED8_reg <= LED8_in;
   end
 
   always@(posedge clk or negedge rstn) begin 
     if(!rstn) begin
-      LED8 <= 1'b0;
-    end
-    else if(BTN8) begin
       LED8 <= 1'b1;
     end
-    else if(LED8_reg == 1'b0 && LED8_in == 1'b1) begin
+    else if(BTN6) begin
       LED8 <= 1'b0;
+    end
+    else if(LED8_reg == 1'b1 && LED8_in == 1'b0) begin
+      LED8 <= 1'b1;
     end
     else 
       LED8 <= LED8;

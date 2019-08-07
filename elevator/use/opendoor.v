@@ -104,9 +104,9 @@ module opendoor
       LED1   <= 1'b0;
       LED2   <= 1'b0;
       LED3   <= 1'b0;
-      LED6   <= 1'b0;
-      LED7   <= 1'b0;
-      LED8   <= 1'b0;
+      LED6   <= 1'b1;
+      LED7   <= 1'b1;
+      LED8   <= 1'b1;
     end
     else if(open == 1'b1) begin
       LED5_R <= 1'b1;
@@ -132,17 +132,29 @@ module opendoor
           end
           else if(LED4_B)
             LED3 <= 1'b1;
-        end
+        end 
       end
       else if(out_state == STATE'd7) begin
         if(open_reg == 2'01)begin
           if(LED4_G) begin
             LED2 <= 1'b1;
-            LED7 <= 1'b1;
+            LED7 <= 1'b0;
           end
           else if(LED4_B) begin
             LED3 <= 1'b1;
-            LED8 <= 1'b1;
+            LED8 <= 1'b0;
+          end
+        end
+      end
+      else if(out_state == STATE'd8) begin
+        if(open_reg == 2'01) begin
+          if(LED4_R) begin
+            LED0 <= 1'b1;
+            LED6 <= 1'b0;
+          end
+          else if(LED4_G) begin
+            LED1 <= 1'b1;
+            LED7 <= 1'b0;
           end
         end
       end
@@ -154,9 +166,9 @@ module opendoor
       LED1   <= 1'b0;
       LED2   <= 1'b0;
       LED3   <= 1'b0;
-      LED6   <= 1'b0;
-      LED7   <= 1'b0;
-      LED8   <= 1'b0;
+      LED6   <= 1'b1;
+      LED7   <= 1'b1;
+      LED8   <= 1'b1;
     end
   end
 
