@@ -28,34 +28,34 @@ module redcatch
   output reg  red3_down
 );
 
-  reg [2:0] red1_reg;
-  reg [2:0] red2_reg;
-  reg [2:0] red3_reg;
+  reg [3:0] red1_reg;
+  reg [3:0] red2_reg;
+  reg [3:0] red3_reg;
 
   always@(posedge clk or negedge rstn) begin 
     if(!rstn) begin
-      red1_reg <= 3'b111;
+      red1_reg <= 4'b1111;
     end
     else begin
-      red1_reg <= {red1_reg[1:0],red1_in};
+      red1_reg <= {red1_reg[2:0],red1_in};
     end
   end
 
   always@(posedge clk or negedge rstn) begin 
     if(!rstn) begin
-      red2_reg <= 3'b111;
+      red2_reg <= 4'b1111;
     end
     else begin
-      red2_reg <= {red2_reg[1:0],red2_in};
+      red2_reg <= {red2_reg[2:0],red2_in};
     end
   end
 
   always@(posedge clk or negedge rstn) begin 
     if(!rstn) begin
-      red3_reg <= 3'b111;
+      red3_reg <= 4'b1111;
     end
     else begin
-      red3_reg <= {red3_reg[1:0],red3_in};
+      red3_reg <= {red3_reg[2:0],red3_in};
     end
   end
 
@@ -63,7 +63,7 @@ module redcatch
     if(!rstn) begin
       red1_up <= 1'b0;
     end
-    else if(red1_reg == 3'b011) begin
+    else if(red1_reg == 4'b0111) begin
       red1_up <= 1'b1;
     end
     else begin
@@ -75,7 +75,7 @@ module redcatch
     if(!rstn) begin
       red2_up <= 1'b0;
     end
-    else if(red2_reg == 3'b011) begin
+    else if(red2_reg == 4'b0111) begin
       red2_up <= 1'b1;
     end
     else begin
@@ -87,7 +87,7 @@ module redcatch
     if(!rstn) begin
       red3_up <= 1'b0;
     end
-    else if(red3_reg == 3'b011) begin
+    else if(red3_reg == 4'b0111) begin
       red3_up <= 1'b1;
     end
     else begin
@@ -99,7 +99,7 @@ module redcatch
     if(!rstn) begin
       red1_down <= 1'b0;
     end
-    else if(red1_reg == 3'b100) begin
+    else if(red1_reg == 4'b1000) begin
       red1_down <= 1'b1;
     end
     else begin
@@ -111,7 +111,7 @@ module redcatch
     if(!rstn) begin
       red2_down <= 1'b0;
     end
-    else if(red2_reg == 3'b100) begin
+    else if(red2_reg == 4'b1000) begin
       red2_down <= 1'b1;
     end
     else begin
@@ -123,7 +123,7 @@ module redcatch
     if(!rstn) begin
       red3_down <= 1'b0;
     end
-    else if(red3_reg == 3'b100) begin
+    else if(red3_reg == 4'b1000) begin
       red3_down <= 1'b1;
     end
     else begin

@@ -103,9 +103,9 @@ module fsm
         if(!rstn)
           next_state = SIDLE;
         else begin
-          if(LED0_in)
+          if(LED0_in | (!LED6_in))
             next_state = S5;
-          else if(LED1_in || LED2_in || LED3_in)
+          else if(LED1_in | LED2_in | LED3_in | (!LED7_in) | (!LED8_in))
             next_state = S7;
           else
             next_state = S2;
@@ -116,11 +116,11 @@ module fsm
         if(!rstn)
           next_state = SIDLE;
         else begin
-          if(LED1_in || LED2_in)
+          if(LED1_in | LED2_in | (!LED7_in))
             next_state = S5;
-          else if(LED3_in)
+          else if(LED3_in | (!LED6_in))
             next_state = S7;
-          else if(LED0_in)
+          else if(LED0_in | (!LED8_in))
             next_state = S8;
           else
             next_state = S3;
@@ -131,9 +131,9 @@ module fsm
         if(!rstn)
           next_state = SIDLE;
         else begin
-          if(LED3_in)
+          if(LED3_in | (!LED8_in))
             next_state = S5;
-          else if(LED0_in || LED1_in || LED2_in)
+          else if(LED0_in | LED1_in | LED2_in | (!LED6_in) | (!LED7_in))
             next_state = S8;
           else
             next_state = S4;
@@ -152,25 +152,25 @@ module fsm
       S6:begin
         if(!rstn)
           next_state = SIDLE;
-        else if(LED4_G & LED2_in & !LED0_in & !LED3_in)
+        else if((LED4_R & (LED0_in | (!LED6_in))) | (LED4_G & (LED1_in | LED2_in | (!LED7_in))) | (LED4_B & (LED3_in|| (!LED8_in))))
           next_state = S5;
-        else if((LED4_R & (LED0_in | LED6_in)) | (LED4_G & (LED1_in | LED2_in | LED7_in)) | (LED4_B & (LED3_in|| LED8_in)))
-          next_state = S5;
-        else if((LED4_R & (LED1_in | LED2_in | LED3_in | LED7_in | LED8_in)) | (LED4_G & (LED3_in | LED8_in)))
+        else if((LED4_R & (LED1_in | LED2_in | LED3_in | (!LED7_in) | (!LED8_in))) | (LED4_G & (LED3_in | (!LED8_in))))
           next_state = S7;
-        else if((LED4_B & (LED0_in | LED1_in | LED2_in | LED6_in | LED7_in)) | (LED4_G & (LED0_in | LED6_in)))
+        else if((LED4_B & (LED0_in | LED1_in | LED2_in | (!LED6_in) | (!LED7_in))) | (LED4_G & (LED0_in | (!LED6_in))))
           next_state = S8;
+        else
+          next_state = S6;
       end
 
       S7: begin
         if(LED4_R) begin
           if((LED1_in | LED2_in | (!LED7_in)) & red2_up) 
             next_state = S9;
-          else if(LED1_in || LED2_in || (!LED7_in))
+          else if(LED1_in | LED2_in | (!LED7_in))
             next_state = S7;
-          else if((LED3_in || (!LED8_in)) && red3_up)
+          else if((LED3_in | (!LED8_in)) & red3_up)
             next_state = S10;
-          else if(LED3_in || (!LED8_in))
+          else if(LED3_in | (!LED8_in))
             next_state = S7;
           else
             next_state = S2;
@@ -341,6 +341,10 @@ module fsm
         LED5_B <= 1'b1;
         LED5_G <= 1'b0;
         out_state <= 4'd7;
+        if(red2_up) begin
+          LED4_R <= 1'b0;
+          LED4_G <= 1'b1;
+        end
       end
 
       S8: begin
@@ -349,6 +353,10 @@ module fsm
         LED5_B <= 1'b0;
         LED5_G <= 1'b1;
         out_state <= 4'd8;
+        if(red2_down) begin
+          LED4_B <= 1'b0;
+          LED4_G <= 1'b1;
+        end
       end
 
       S9: begin

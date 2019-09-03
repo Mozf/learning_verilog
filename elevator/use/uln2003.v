@@ -56,7 +56,7 @@ module ULN2003
       cnt_speed <= 4'd0;
       fsm <= 2'b00;
     end
-    else if(cnt_speed == 4'd5) begin
+    else if(cnt_speed == 4'd4) begin
       if(up) begin
         cnt_speed <= 4'd0;
         fsm <= fsm + 1'b1;
