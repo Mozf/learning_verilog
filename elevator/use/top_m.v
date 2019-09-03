@@ -13,6 +13,7 @@
 module top
 (
   input         sysclk,
+
   //reset
   input         SW0,
 
@@ -48,7 +49,6 @@ module top
   output  [3:0] INgogo
 );
 
-  wire        clk1;
   wire        rstn;
 
   //redcatch-fsm
@@ -89,7 +89,7 @@ module top
 
   fsm fsm_inst_0
   (
-    .clk       ( clk1        ),
+    .clk       ( sysclk      ),
     .rstn      ( rstn        ),
 
     .red1_up   ( red1_up    ),
@@ -126,14 +126,14 @@ module top
 
   reset reset_0
   (
-    .clk    ( clk1       ),
+    .clk    ( sysclk     ),
     .SW0    ( SW0        ),
     .rstn   ( rstn       )
   );
 
   redcatch redcatch_inst_0
   (
-    .clk        ( clk1       ),
+    .clk        ( sysclk     ),
     .rstn       ( rstn       ),
 
     .red1_in    ( red1       ),
@@ -151,7 +151,7 @@ module top
 
   btncontrol btncontrol_inst_0
   (
-    .clk        ( clk1       ),
+    .clk        ( sysclk     ),
     .rstn       ( rstn       ),
 
     .BTN0       ( BTN0       ),
@@ -173,7 +173,7 @@ module top
 
   ledcontrol ledcontrol_inst_0
   (
-    .clk        ( clk1       ),
+    .clk        ( sysclk     ),
     .rstn       ( rstn       ),
 
     .BTN0       ( BTN0_b_l   ),
@@ -184,47 +184,56 @@ module top
     .BTN5       ( BTN5_b_l   ),
     .BTN6       ( BTN6_b_l   ),
 
+    .LED0_in    ( LED0_lc_od ),
+    .LED1_in    ( LED1_lc_od ),
+    .LED2_in    ( LED2_lc_od ),
+    .LED3_in    ( LED3_lc_od ),
+    .LED6_in    ( LED6_lc_od ),
+    .LED7_in    ( LED7_lc_od ),
+    .LED8_in    ( LED8_lc_od ),
+
     .LED0       ( LED0       ),
     .LED1       ( LED1       ),
     .LED2       ( LED2       ),
     .LED3       ( LED3       ),
     .LED6       ( LED6       ),
     .LED7       ( LED7       ),
-    .LED8       ( LED8       ),
-
-    .open       ( open       ),
-    .out_state  ( out_state  ),
-    .LED4_R     ( LED4_R     ),
-    .LED4_G     ( LED4_G     ),
-    .LED4_B     ( LED4_B     )
+    .LED8       ( LED8       )
   );
 
   opendoor opendoor_inst_0
   (
-    .clk        ( clk1       ),
+    .clk        ( sysclk     ),
     .rstn       ( rstn       ),
 
     .open       ( open       ),
+    
+    .out_state  ( out_state  ),
 
     .close      ( close      ),
-    .LED5_R     ( LED5_R     )
+
+    .LED0       ( LED0_lc_od ),
+    .LED1       ( LED1_lc_od ),
+    .LED2       ( LED2_lc_od ),
+    .LED3       ( LED3_lc_od ),
+    .LED4_R     ( LED4_R     ),
+    .LED4_G     ( LED4_G     ),
+    .LED4_B     ( LED4_B     ),
+    .LED5_R     ( LED5_R     ),
+    .LED6       ( LED6_lc_od ),
+    .LED7       ( LED7_lc_od ),
+    .LED8       ( LED8_lc_od )
   );
 
   ULN2003 ULN2003_inst_0
   (
-    .clk        ( clk1       ),
+    .clk        ( sysclk     ),
     .rstn       ( rstn       ),
 
     .up         ( up         ),
     .down       ( down       ),
 
     .INgogo     ( INgogo     )
-  );
-
-  clk_wiz_0 clk_wiz_0_inst_0
-  (
-    .clk_in1    ( sysclk     ),
-    .clk_out1   ( clk1       )
   );
 
 endmodule

@@ -129,3 +129,101 @@ always@(posedge clk or negedge rstn) begin
     end
   end
 ```
+
+# IO设置
+
+|name|IO|Pin|
+|:-:|:-:|:-:|
+|IN4|IO13|N17|
+|IN3|IO12|P18|
+|IN2|IO11|R17|
+|IN1|IO10|T16|
+|BTN0||D19|
+|BTN1||D20|
+|BTN2||L20|
+|BTN3||L19|
+|BTN4|IO4|V15|
+|BTN5|IO5|T15|
+|BTN6|IO6|R16|
+|clk||H16|
+|LED0||R14|
+|LED1||P14|
+|LED2||N16|
+|LED3||M14|
+|LED4_R||N15|
+|LED4_G||G17|
+|LED4_B||L15|
+|LED5_R||M15|
+|LED5_G||L14|
+|LED5_B||G14|
+|LED6|IO7|U17|
+|LED7|IO8|V17|
+|LED8|IO9|V18|
+|red1|IO1|U12|
+|red2|IO32|V8|
+|red3|IO38|W8|
+|SW0||M20|
+
+```
+set_property IOSTANDARD LVCMOS33 [get_ports {INgogo[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {INgogo[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {INgogo[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {INgogo[0]}]
+set_property PACKAGE_PIN N17 [get_ports {INgogo[0]}]
+set_property PACKAGE_PIN P18 [get_ports {INgogo[1]}]
+set_property PACKAGE_PIN R17 [get_ports {INgogo[2]}]
+set_property PACKAGE_PIN T16 [get_ports {INgogo[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN0]
+set_property PACKAGE_PIN D19 [get_ports BTN0]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN1]
+set_property PACKAGE_PIN D20 [get_ports BTN1]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN2]
+set_property PACKAGE_PIN L20 [get_ports BTN2]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN3]
+set_property PACKAGE_PIN L19 [get_ports BTN3]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN4]
+set_property PACKAGE_PIN V15 [get_ports BTN4]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN5]
+set_property PACKAGE_PIN T15 [get_ports BTN5]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN6]
+set_property PACKAGE_PIN R16 [get_ports BTN6]
+creare_clock -name clk -period 8.000 -waveform {0.000 4.000} [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports clk]
+set_property PACKAGE_PIN H16 [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports LED0]
+set_property PACKAGE_PIN R14 [get_ports LED0]
+set_property IOSTANDARD LVCMOS33 [get_ports LED1]
+set_property PACKAGE_PIN P14 [get_ports LED1]
+set_property IOSTANDARD LVCMOS33 [get_ports LED2]
+set_property PACKAGE_PIN N16 [get_ports LED2]
+set_property IOSTANDARD LVCMOS33 [get_ports LED3]
+set_property PACKAGE_PIN M14 [get_ports LED3]
+set_property IOSTANDARD LVCMOS33 [get_ports LED4_R]
+set_property PACKAGE_PIN N15 [get_ports LED4_R]
+set_property IOSTANDARD LVCMOS33 [get_ports LED4_G]
+set_property PACKAGE_PIN G17 [get_ports LED4_G]
+set_property IOSTANDARD LVCMOS33 [get_ports LED4_B]
+set_property PACKAGE_PIN L15 [get_ports LED4_B]
+set_property IOSTANDARD LVCMOS33 [get_ports LED5_R]
+set_property PACKAGE_PIN M15 [get_ports LED5_R]
+set_property IOSTANDARD LVCMOS33 [get_ports LED5_G]
+set_property PACKAGE_PIN L14 [get_ports LED5_G]
+set_property IOSTANDARD LVCMOS33 [get_ports LED5_B]
+set_property PACKAGE_PIN G14 [get_ports LED5_B]
+set_property DRIVE 12 [get_ports {INgogo[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports LED6]
+set_property PACKAGE_PIN U17 [get_ports LED6]
+set_property IOSTANDARD LVCMOS33 [get_ports LED7]
+set_property PACKAGE_PIN V17 [get_ports LED7]
+set_property IOSTANDARD LVCMOS33 [get_ports LED8]
+set_property PACKAGE_PIN V18 [get_ports LED8]
+set_property IOSTANDARD LVCMOS33 [get_ports red1]
+set_property PACKAGE_PIN U12 [get_ports red1]
+set_property IOSTANDARD LVCMOS33 [get_ports red2]
+set_property PACKAGE_PIN U13 [get_ports red2]
+set_property IOSTANDARD LVCMOS33 [get_ports red3]
+set_property PACKAGE_PIN V13 [get_ports red3]
+set_property IOSTANDARD LVCMOS33 [get_ports SW0]
+set_property PACKAGE_PIN M20 [get_ports SW0]
+
+```
