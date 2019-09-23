@@ -28,33 +28,25 @@ module b
   end
 
   always@(a, b, f, g)begin
-    next_state = idle;
+    next_state = 2'bxx;
     case(state)
       idle: begin
-        if(a == 1'b1)begin
-          c = 1'b1;
+        if(a == 1'b1)
           next_state = idle;
-        end
-        else if(b == 1'b1)begin
-          d = 1'b1;
+        else if(b == 1'b1)
           next_state = runa;
-        end
       end
 
       runa:begin
-        if(f == 1'b1)begin
-          e = 1'b1;
+        if(f == 1'b1)
           next_state = runb;
-        end
         else
           next_state = runa;
       end
 
       runb:begin
-        if(g != 1'b1)begin
-          h = 1'b1;
+        if(g != 1'b1)
           next_state = runb;
-        end
         else
           next_state = idle;
       end
@@ -70,7 +62,17 @@ module b
     
     case(next_state) begin
       idle: begin
+        if(state == idle)
+          c = 1'b1;
+      end
 
+      runa: begin
+        if(state == idle)
+          d = 1'b1;
+      end
+
+      runb: begin
+        if(state == )
       end
     endcase
   end
