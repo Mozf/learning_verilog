@@ -9,6 +9,10 @@ module test_tb;
   wire d;
   wire e;
   wire h;
+  wire c1;
+  wire d1;
+  wire e1;
+  wire h1;
 
   initial begin
     clk = 1'b0;
@@ -43,5 +47,19 @@ module test_tb;
     .f ( f),
     .g ( g),
     .h ( h)
+  );
+
+  b b_inst
+  (
+    .clk ( clk ),
+    .rstn ( rstn),
+    .a ( a),
+    .b ( b),
+    .c ( c1),
+    .d ( d1),
+    .e ( e1),
+    .f ( f),
+    .g ( g),
+    .h ( h1)
   );
 endmodule

@@ -27,7 +27,7 @@ module b
       state <= next_state;
   end
 
-  always@(a, b, f, g)begin
+  always@(a, b, f, g, state)begin
     next_state = 2'bxx;
     case(state)
       idle: begin
@@ -60,7 +60,7 @@ module b
     e = 1'b0;
     h = 1'b0;
     
-    case(next_state) begin
+    case(next_state)
       idle: begin
         if(state == idle)
           c = 1'b1;
@@ -72,7 +72,10 @@ module b
       end
 
       runb: begin
-        if(state == )
+        if(state == runb)
+          h = 1'b1;
+        else if(state == runa)
+          e = 1'b1;
       end
     endcase
   end
