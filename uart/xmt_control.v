@@ -1,3 +1,15 @@
+//==============================================================================
+// Module name: uart_control
+// Author     : momo
+// E-mail     : 1345238761@qq.com
+// Create date: 2019.9.24
+// Description: 
+// -------------------------------------------------
+// Modification log here:
+// Author     :
+// Date       : 
+// Message    :
+//==============================================================================
 module xmt_control
 #(
   parameter one_hot_count  = 3,
