@@ -1,5 +1,5 @@
 //==============================================================================
-// Module name: uart_control
+// Module name: xmt_control
 // Author     : momo
 // E-mail     : 1345238761@qq.com
 // Create date: 2019.9.24
@@ -39,9 +39,9 @@ module xmt_control
   reg [state_count - 1 : 0]  current_state;
   reg [state_count - 1 : 0]  next_state;
 
-  always @ (posedge clk or negedge rst) begin
+  always @ (posedge clk or negedge rstn) begin
     if(!rstn)
-      current_state <= idle;
+      current_state <= s_idle;
     else
       current_state <= next_state;
   end
@@ -59,7 +59,7 @@ module xmt_control
       s_idle: begin
         if(load_xmt_datareg == 1'b1) begin 
           load_xmt_dr = 1;
-          next_state  = idle;
+          next_state  = s_idle;
         end
         else if(byte_ready == 1'b1) begin
           load_xmt_shftreg = 1'b1;
@@ -83,11 +83,11 @@ module xmt_control
         end
         else begin
           clear = 1'b1;
-          next_state = idle;
+          next_state = s_idle;
         end
       end
 
-      default: next_state = idle;
+      default: next_state = s_idle;
     endcase
   end
 
