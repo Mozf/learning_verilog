@@ -1,4 +1,6 @@
+# learning_verilog
 
+这是我学习fpga的
 
 ## 程序开头介绍
 
