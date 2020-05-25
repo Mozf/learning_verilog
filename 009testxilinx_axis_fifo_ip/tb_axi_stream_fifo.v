@@ -51,7 +51,7 @@ axis_data_fifo_0  u_axis_data_fifo_0 (
 
 initial
 begin
-  #(PERIOD*7) m_axis_tready = 1;
+  #(PERIOD*7) m_axis_tready = 1; //#(PERIOD*50) m_axis_tready = 1;
   #(PERIOD*50)  $stop;
 end
 
