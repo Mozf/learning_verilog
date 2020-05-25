@@ -1,0 +1,70 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dF:/gitworkspace/verilog/008fsm
+va
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 ckm`0]>0LN[W1CKgBLleX2
+Ig3UN1c>3bbnfA^EX>9TB82
+R0
+w1590391858
+8test.v
+Ftest.v
+L0 1
+Z2 OL;L;10.6d;65
+Z3 !s108 1590396014.000000
+!s107 test.v|
+!s90 -reportprogress|300|test.v|
+!i113 0
+Z4 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z5 tCvgOpt 0
+vb
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 KWi2Q7gTEDEXzJhE]La_:3
+I[kUMcQEc1P_:=]`X^MUn=3
+R0
+w1590394153
+8test3.v
+Ftest3.v
+L0 1
+R2
+R3
+!s107 test3.v|
+!s90 -reportprogress|300|test3.v|
+!i113 0
+R4
+R5
+vtest_tb
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 NYY`K?9840a0Vd1^?KH>Q1
+I=`Ja[`H1X56Li>fBdc^YI1
+R0
+w1590391856
+8test_tb.v
+Ftest_tb.v
+L0 1
+R2
+R3
+!s107 test_tb.v|
+!s90 -reportprogress|300|test_tb.v|
+!i113 0
+R4
+R5

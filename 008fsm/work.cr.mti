@@ -1,0 +1,22 @@
+F:/gitworkspace/verilog/008fsm/test3.v {1 {vlog -work work -vopt -stats=none F:/gitworkspace/verilog/008fsm/test3.v
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module b
+
+Top level modules:
+	b
+
+} {} {}} F:/gitworkspace/verilog/008fsm/test.v {1 {vlog -work work -vopt -stats=none F:/gitworkspace/verilog/008fsm/test.v
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module a
+
+Top level modules:
+	a
+
+} {} {}} F:/gitworkspace/verilog/008fsm/test_tb.v {1 {vlog -work work -vopt -stats=none F:/gitworkspace/verilog/008fsm/test_tb.v
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module test_tb
+
+Top level modules:
+	test_tb
+
+} {} {}}

@@ -55,27 +55,27 @@ module b
   end
 
   always @ (posedge clk or negedge rstn) begin
-    c = 1'b0;
-    d = 1'b0;
-    e = 1'b0;
-    h = 1'b0;
+    c <= 1'b0;
+    d <= 1'b0;
+    e <= 1'b0;
+    h <= 1'b0;
     
     case(next_state)
       idle: begin
-        if(state == idle)
-          c = 1'b1;
+        if(a)
+          c <= 1'b1;
       end
 
       runa: begin
-        if(state == idle)
-          d = 1'b1;
+        if(b)
+          d <= 1'b1;
       end
 
       runb: begin
-        if(state == runb)
-          h = 1'b1;
-        else if(state == runa)
-          e = 1'b1;
+        if(!g)
+          h <= 1'b1;
+        if(f)
+          e <= 1'b1;
       end
     endcase
   end
