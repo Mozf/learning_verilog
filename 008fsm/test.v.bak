@@ -1,11 +1,8 @@
 module a
 #(
-  parameter idle = 3'b000,
-  parameter runa = 3'b001,
-  parameter runb = 3'b010,
-  parameter DELAY = 3'b011,
-  parameter DELAY0 = 3'b100,
-  parameter DELAY1 = 3'b101
+  parameter idle = 2'b00,
+  parameter runa = 2'b01,
+  parameter runb = 2'b10
 )
 (
   input clk,
@@ -20,8 +17,8 @@ module a
   output reg e,
   output reg h
 );
-  reg [2:0] state;
-  reg [2:0] next_state;
+  reg [1:0] state;
+  reg [1:0] next_state;
 
   always@(posedge clk or negedge rstn)begin
     if(!rstn)
@@ -40,11 +37,11 @@ module a
       idle: begin
         if(a == 1'b1)begin
           c = 1'b1;
-          next_state = runa;
+          next_state = idle;
         end
         else if(b == 1'b1)begin
           d = 1'b1;
-          next_state = idle;
+          next_state = runa;
         end
       end
 
@@ -58,24 +55,11 @@ module a
       end
 
       runb:begin
-        if(g == 1'b1)
-          next_state = DELAY;
-        else
+        if(g = 1'b1)
           next_state = runb;
+        else
+          next_state = idle;
       end
-
-      DELAY:begin
-        next_state = DELAY0;
-      end
-
-      DELAY0:begin
-        next_state = DELAY1;
-      end
-
-      DELAY1:begin
-        next_state = idle;
-      end
-
       default: next_state = idle;
     endcase
   end

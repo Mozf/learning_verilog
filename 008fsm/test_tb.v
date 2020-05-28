@@ -23,14 +23,21 @@ module test_tb;
     g = 1'b0;
 
     #5 rstn = 1'b1;
-    #5 a = 1'b1;
-    #5 a = 1'b0;
-    #5 b = 1'b1;
-    #5 f = 1'b1;
-    b = 1'b0;
-    #5 g = 1'b1;
-    #5 rstn = 1'b0;
+    #4 a = 1'b1;
+    #6 b = 1'b1;
+    #2 b = 1'b0;
+    #6 f = 1'b1;
+    #2 f = 1'b0;
     #10 $stop;
+  end
+
+  always @ (posedge clk or negedge rstn) begin
+    if(!rstn)
+      g <= 0;
+    else if(e)
+      g <= 1;
+    else
+      g <= 0;
   end
 
   always #1 clk = ~clk;
