@@ -1,0 +1,71 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 df:/gitworkspace/verilog/011clock
+vclock
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 EXZ^=SFC`ECnzlYj^F@W33
+IjfBeWSo=G<=0XRZhIZXJ@2
+R0
+w1592473869
+8clock.v
+Fclock.v
+L0 1
+Z2 OL;L;10.6d;65
+Z3 !s108 1592475036.000000
+!s107 clock.v|
+!s90 -reportprogress|300|clock.v|
+!i113 0
+Z4 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z5 tCvgOpt 0
+vclock_tb
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 XoBN71lBECjaYM`WfD2Wz0
+I_4kJDbCW8RLc=G1j]aClT1
+R0
+w1592474651
+Z6 8clock_tb.v
+Z7 Fclock_tb.v
+L0 3
+R2
+R3
+Z8 !s107 clock_tb.v|
+Z9 !s90 -reportprogress|300|clock_tb.v|
+!i113 0
+R4
+R5
+vtb_clock
+!s110 1592474392
+!i10b 1
+!s100 :0j]]oXozjeB1[RFWIO9@1
+IO;PU^I;Dl^YD]lFm6_<db0
+R1
+R0
+w1592474267
+R6
+R7
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1592474391.000000
+R8
+R9
+!i113 0
+R4
+R5
