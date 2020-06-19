@@ -25,6 +25,9 @@ initial begin
   rstb = 1;
 end
 
+wire rstawire = ~rsta;
+wire rstbwire = ~rstb;
+
 reg [6:0] weareg;
 
 always @ (posedge clka or negedge rsta) begin
@@ -46,9 +49,9 @@ end
 always @ (posedge clka or negedge rsta) begin
   if(!rsta)
     addra <= 'd0;
-  else if(weareg[6] & (addra == 'd59))
+  else if(wea & (addra == 'd59))
     addra <= addra;
-  else if(weareg[6])
+  else if(wea)
     addra <= addra + 1;
   else
     addra <= addra;
@@ -57,9 +60,9 @@ end
 always @ (posedge clka or negedge rsta) begin
   if(!rsta)
     dina  <= 'd3;
-  else if(weareg[6] & (addra == 'd59))
+  else if(wea & (addra == 'd59))
     dina <= dina;
-  else if(weareg[6])
+  else if(wea)
     dina <= dina + 2;
   else
     dina <= dina;
@@ -70,8 +73,10 @@ reg [8:0] webreg;
 always @ (posedge clkb or negedge rstb) begin
   if(!rstb)
     webreg <= 'd1;
-  else
+  else if(addra >= 'd8)
     webreg <= {webreg[7:0], webreg[8]};
+  else
+    webreg <= webreg;
 end
 
 always @ (posedge clkb or negedge rstb) begin
@@ -86,9 +91,9 @@ end
 always @ (posedge clkb or negedge rstb) begin
   if(!rstb)
     addrb <= 'd0;
-  else if(webreg[8] & (addrb == 'd59))
+  else if(web & (addrb == 'd59))
     addrb <= 'd0;
-  else if(webreg[8])
+  else if(web)
     addrb <= addrb + 1;
   else
     addrb <= addrb;
@@ -98,16 +103,14 @@ end
 bram_8bit_60 bram_8bit_60_inst_0
 (
   .clka   (clka),
-  .rsta   (rsta),
   .wea    (wea), 
   .addra  (addra),
   .dina   (dina),
 
   .clkb   (clkb),
-  .rstb   (rstb),
-  .web    (web),
+  .rstb   (rstbwire),
   .addrb  (addrb),
-  .doutb  (doutbs)
+  .doutb  (doutb)
 );
 
 endmodule
