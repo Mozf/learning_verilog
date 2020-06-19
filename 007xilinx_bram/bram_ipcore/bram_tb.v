@@ -40,7 +40,7 @@ end
 always @ (posedge clka or negedge rsta) begin
   if(!rsta)
     wea <= 0;
-  else if(weareg[6])
+  else if(weareg[3])
     wea <= 1;
   else
     wea <= 0;
@@ -49,7 +49,7 @@ end
 always @ (posedge clka or negedge rsta) begin
   if(!rsta)
     addra <= 'd0;
-  else if(wea & (addra == 'd59))
+  else if(wea & (addra == 'd60))
     addra <= addra;
   else if(wea)
     addra <= addra + 1;
@@ -60,9 +60,9 @@ end
 always @ (posedge clka or negedge rsta) begin
   if(!rsta)
     dina  <= 'd3;
-  else if(wea & (addra == 'd59))
+  else if(weareg[6] & (addra == 'd60))
     dina <= dina;
-  else if(wea)
+  else if(weareg[6])
     dina <= dina + 2;
   else
     dina <= dina;
@@ -73,7 +73,7 @@ reg [8:0] webreg;
 always @ (posedge clkb or negedge rstb) begin
   if(!rstb)
     webreg <= 'd1;
-  else if(addra >= 'd8)
+  else if(addra >= 'd59)
     webreg <= {webreg[7:0], webreg[8]};
   else
     webreg <= webreg;
@@ -88,17 +88,73 @@ always @ (posedge clkb or negedge rstb) begin
     web <= 0;
 end
 
+reg         cnt2;
+reg [5 : 0] cnt50;
+reg [3 : 0] cnt09;
+reg [3 : 0] cnt19;
+reg         loop;
+
+always @ (posedge clkb or negedge rstb) begin
+  if(!rstb)
+    cnt2 <= 0;
+  else if(web)
+    cnt2 <= cnt2 + 1;
+  else
+    cnt2 <= cnt2;
+end
+
+always @ (posedge clkb or negedge rstb) begin
+  if(!rstb)
+    cnt50 <= 'd0;
+  else if(web & (!cnt2) & (cnt50=='d50))
+    cnt50 <= 'd0;
+  else if(web & (!cnt2))
+    cnt50 <= cnt50 + 'd10;
+  else
+    cnt50 <= cnt50;
+end
+
+always @ (posedge clkb or negedge rstb) begin
+  if(!rstb)
+    loop <= 0;
+  else if(cnt50=='d50)
+    loop <= 1;
+  else
+    loop <= 0;
+end
+
+always @ (posedge clkb or negedge rstb) begin
+  if(!rstb)
+    cnt09 <= 'd0;
+  else if(web & (!cnt2) & (cnt09=='d8) & (cnt50=='d50))
+    cnt09 <= 'd0;
+  else if(web & (!cnt2) & loop)
+    cnt09 <= cnt09 + 'd2;
+  else
+    cnt09 <= cnt09;
+end
+
+always @ (posedge clkb or negedge rstb) begin
+  if(!rstb)
+    cnt19 <= 'd1;
+  else if(web & (!cnt2) & (cnt19=='d9) & (cnt50=='d50))
+    cnt19 <= 'd1;
+  else if(web & (!cnt2) & loop)
+    cnt19 <= cnt19 + 'd2;
+  else
+    cnt19 <= cnt19;
+end
+
 always @ (posedge clkb or negedge rstb) begin
   if(!rstb)
     addrb <= 'd0;
-  else if(web & (addrb == 'd59))
-    addrb <= 'd0;
-  else if(web)
-    addrb <= addrb + 1;
+  else if(web & cnt2)
+    addrb <= cnt09 + cnt50;
+  else if(web & (!cnt2))
+    addrb <= cnt19 + cnt50;  
   else
     addrb <= addrb;
 end
-
 
 bram_8bit_60 bram_8bit_60_inst_0
 (
