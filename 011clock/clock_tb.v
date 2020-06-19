@@ -8,7 +8,7 @@ parameter PERIOD250  = 5;
 
 // clock Inputs
 reg   clk100M                              = 0 ;
-reg   clk250M                              = 0 ;
+reg   clk200M                              = 0 ;
 reg   rstn                                 = 0 ;
 
 // clock Outputs
@@ -22,7 +22,7 @@ end
 
 initial
 begin
-    forever #(PERIOD250/2)  clk250M=~clk250M;
+    forever #(PERIOD250/2)  clk200M=~clk200M;
 end
 
 initial
@@ -32,7 +32,7 @@ end
 
 clock  u_clock (
     .clk100M                 ( clk100M   ),
-    .clk250M                 ( clk250M   ),
+    .clk200M                 ( clk200M   ),
     .rstn                    ( rstn      ),
 
     .clk                     ( clk       )
@@ -42,6 +42,15 @@ initial
 begin
   #(PERIOD*500)
   $stop;
+end
+
+initial
+begin
+$dumpfile("clock.vcd");
+$dumpvars(0, clock_tb);
+
+#1500;
+$finish;
 end
 
 endmodule
