@@ -22,25 +22,27 @@ module fp;
   end
 
   initial begin
-    #(PERIOD*2);
+    #(PERIOD*30);
     rstn = 1;
     #(PERIOD*200);
     $stop;
   end
 
-  reg [3 : 0] cnt4;
+  reg [4 : 0] cnt4;
 
   always @ (posedge clk or negedge rstn) begin
     if(!rstn)
-      cnt4 <= 'd1;    
+      cnt4 <= 'd0;   
+    else if(cnt4 == 'd3) 
+      cnt4 <= 'd0;
     else
-      cnt4 <= {cnt4[2:0], cnt4[3]};
+      cnt4 <= cnt4 + 1;
   end
 
   always @ (posedge clk or negedge rstn) begin
     if(!rstn)
       avalid <= 0;
-    else if(cnt4[2] & aready)
+    else if(aready)
       avalid <= 1;
     else
       avalid <= 0;
@@ -49,7 +51,7 @@ module fp;
   always @ (posedge clk or negedge rstn) begin
     if(!rstn)
       bvalid <= 0;
-    else if(cnt4[2] & bready)
+    else if(bready)
       bvalid <= 1;
     else
       bvalid <= 0;
@@ -88,7 +90,7 @@ module fp;
     .s_axis_b_tready ( bready ),
     .s_axis_b_tdata ( bdata ),
     .m_axis_result_tvalid ( ovalid ),
-    .m_axis_result_tready ( oready ),
+    // .m_axis_result_tready ( oready ),
     .m_axis_result_tdata( odata )
   );
 endmodule
