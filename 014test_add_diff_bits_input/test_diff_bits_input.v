@@ -6,6 +6,7 @@ reg [7:0] A = 'd0;
 reg [8:0] B = 'b1111_11111;
 reg clk = 'd0;
 wire [9:0] S;
+wire [16:0] P;
 
 always #1 clk = ~clk;
 
@@ -27,5 +28,13 @@ c_addsub_0 c_addsub_0
   .B(B),
   .CLK(clk),
   .S(S)
+);
+
+mult_gen_0 mult_gen_0
+(
+  .A(A),
+  .B(B),
+  .CLK(clk),
+  .P(P)
 );
 endmodule
