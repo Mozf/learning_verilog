@@ -9,24 +9,24 @@ parameter q_width = d_width/2 - 1,
 parameter r_width = q_width + 1	
 )
 (
-input			wire									clk,
-input			wire									rst,
-input			wire									i_vaild,
-input			wire			[d_width:0]			data_i, //输入
+input   wire              clk,
+input   wire              rst,
+input   wire              i_vaild,
+input   wire [d_width:0]  data_i, //输入
 
-
-output		reg									o_vaild,
-output		reg			[q_width:0]			data_o, //输出
-output		reg			[r_width:0]			data_r  //余数
+output  reg               o_vaild,
+output  reg  [q_width:0]  data_o, //输出
+output  reg  [r_width:0]  data_r  //余数
 
 );
 //--------------------------------------------------------------------------------
-reg 							[d_width:0] 		D				[r_width:1]; //被开方数
-reg 							[q_width:0] 		Q_z			[r_width:1]; //临时
-reg	 						[q_width:0] 		Q_q			[r_width:1]; //确认
-reg 													ivalid_t		[r_width:1];
+reg [d_width:0] D	       [r_width:1]; //被开方数
+reg [q_width:0] Q_z      [r_width:1]; //临时
+reg [q_width:0] Q_q      [r_width:1]; //确认
+reg             ivalid_t [r_width:1];
 //--------------------------------------------------------------------------------
-always@(posedge	clk or posedge	rst)begin
+
+always@(posedge	clk or posedge rst)begin
   if(rst) begin
     D[r_width] <= 0;
     Q_z[r_width] <= 0;
@@ -34,7 +34,7 @@ always@(posedge	clk or posedge	rst)begin
     ivalid_t[r_width] <= 0;
   end
   else if(i_vaild) begin
-    D[r_width] <= data_i;  //被开方数据
+    D[r_width] <= data_i;     //被开方数据
     Q_z[r_width] <= {1'b1,{q_width{1'b0}}}; //实验值设置
     Q_q[r_width] <= 0; //实际计算结果
     ivalid_t[r_width] <= 1;
