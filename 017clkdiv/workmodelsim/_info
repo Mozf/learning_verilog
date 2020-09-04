@@ -1,0 +1,50 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dF:/gitworkspace/verilog/017clkdiv
+vclkdiv2
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 ALj4W3=8B?=bAkoQAYh<>1
+I=BTXg4Hfn2V:kd5X[_i=f1
+R0
+w1599185090
+8clkdiv2.v
+Fclkdiv2.v
+L0 1
+Z2 OL;L;10.6d;65
+Z3 !s108 1599185102.000000
+!s107 clkdiv2.v|
+!s90 -reportprogress|300|clkdiv2.v|
+!i113 0
+Z4 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z5 tCvgOpt 0
+vtb_clk
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 H2Kf[2Da`VO=0QI4dXo5c3
+IU6d_>F8V9Ba9F^YN>fi0f3
+R0
+w1599139926
+8tb_clk.v
+Ftb_clk.v
+L0 2
+R2
+R3
+!s107 tb_clk.v|
+!s90 -reportprogress|300|tb_clk.v|
+!i113 0
+R4
+R5
