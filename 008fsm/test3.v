@@ -27,8 +27,7 @@ module b
       state <= next_state;
   end
 
-  always@(a, b, f, g, state)begin
-    next_state = 2'bxx;
+  always@(*)begin
     case(state)
       idle: begin
         if(a == 1'b1)

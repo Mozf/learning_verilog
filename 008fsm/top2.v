@@ -10,7 +10,7 @@
 // Date       :
 // Message    :
 //==============================================================================
-module top2.v
+module top2
 (
   input clk,
   input rstn,
@@ -22,7 +22,7 @@ module top2.v
   input  [7:0] dina,
   input  [7:0] dinb,
 
-  output reg [7:0] dout,
+  output reg [7:0] dout
 );
   
   wire preadd;
