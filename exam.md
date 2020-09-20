@@ -76,6 +76,16 @@ SRAM是静态随机访问存储器，由晶体管存储数据，无需刷新，�
 2. 组合逻辑，case(现状态)，转移next；
 3. 时序逻辑，next的输出；
 
+## FIFO
+
+写时钟频率w_clk,
+读时钟频率 r_clk,
+写时钟周期里，每B个时钟周期会有A个数据写入FIFO
+读时钟周期里，每Y个时钟周期会有X个数据读出FIFO
+则，FIFO的最小深度是？
+
+深度计算： fifo_depth = burst -burst\* (X/Y) \*(r_clk/w_clk)
+
 ## 其他
 
 ROM：**R**ead **O**nly **M**emory，只读存储器，手机、计算机等设备的存储器，但现在的所说的ROM不只是Read Only了，也是可以写入的。
