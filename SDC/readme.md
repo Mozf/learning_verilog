@@ -41,6 +41,12 @@ $ T_{data\_path} + T_{setup} <= T_{skew} + T_{clk} $
 
 $ T_{data\_path} = T_{co} + T_{logic} + T_{routing} ≥ T_{skew} + T_{hold}$
 
+### slack
+
+setup ：数据需求-数据到达
+
+hold：数据到达-数据需求
+
 #### 解释
 
 $ T_{setup} $: 在clk上升沿到来之前，数据提前一个最小时间量“预先准备好”，这个最小时间量就是建立时间。
